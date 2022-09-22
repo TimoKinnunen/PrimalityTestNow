@@ -1,0 +1,95 @@
+﻿<Page
+    x:Class="PrimalityTestNow.Views.InstructionsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="PageTitleTextBlock.Margin" Value="0,0,0,0"/>
+                        <Setter Target="PageContentScrollViewer.Margin" Value="0,0,0,0"/>
+                        <Setter Target="AppBarButtonScrollViewer.Margin" Value="0,0,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="PageTitleTextBlock.Margin" Value="12,0,0,0"/>
+                        <Setter Target="PageContentScrollViewer.Margin" Value="24,0,0,0"/>
+                        <Setter Target="AppBarButtonScrollViewer.Margin" Value="24,0,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="PageTitleTextBlock" 
+                   Grid.Row="0" 
+                   Style="{StaticResource PrimalityTestNowTitleTextBlockStyle}" 
+                   Text="Instructions"/>
+
+        <ScrollViewer x:Name="AppBarButtonScrollViewer"
+                      Grid.Row="1">
+            <StackPanel x:Name="AppBarButtonStackPanel"
+                        Orientation="Horizontal">
+                <AppBarButton x:Name="HomeAppBarButton"
+                              Tapped="HomeAppBarButton_Tapped"
+                              Label="Home"
+                              Icon="Home"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <ScrollViewer x:Name="PageContentScrollViewer"
+                      Grid.Row="2"
+                      Style="{StaticResource PageContentScrollViewerStyle}">
+            <StackPanel x:Name="PageContentStackPanel">
+
+                <!--page content goes here-->
+                <TextBlock Style="{StaticResource PrimalityTestNowSubTitleTextBlockStyle}">A prime number</TextBlock>
+                <TextBlock Style="{StaticResource PrimalityTestNowBodyTextBlockStyle}">
+                    A prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+                    Examples of primenumbers are 2, 3, 5, 7....
+                </TextBlock>
+
+                <TextBlock Style="{StaticResource PrimalityTestNowSubTitleTextBlockStyle}">Home page</TextBlock>
+                <TextBlock Style="{StaticResource PrimalityTestNowBodyTextBlockStyle}">
+                    Browse primenumbers you have in database and search for a primenumber in your database.
+                    Export primenumbers to a .json-file.
+                </TextBlock>
+
+                <TextBlock Style="{StaticResource PrimalityTestNowSubTitleTextBlockStyle}">Primality test page</TextBlock>
+                <TextBlock Style="{StaticResource PrimalityTestNowBodyTextBlockStyle}">
+                    This app lets you test whether an input number is primenumber. And primenumbers are saved in SQLite-database as strings.
+                    Because primenumbers are of datatype BigInteger and saved as strings in database table we can bypass datatype integer limitation for biggest positive number as integer.
+                    You can test 10-digit numbers! Bigger numbers take longer time.
+                </TextBlock>
+
+                <TextBlock Style="{StaticResource PrimalityTestNowSubTitleTextBlockStyle}">Backup data if you want</TextBlock>
+                <TextBlock Style="{StaticResource PrimalityTestNowBodyTextBlockStyle}">
+                    Make a backup of primenumbers by copying database file (PrimalityTestNow.db) to some other folder.
+                    Use external tool DB Browser for SQLite Version 3.12.2 to see data in it.
+                    Copy database file (PrimalityTestNow.db) and put it back later.
+                    Make a backup before deleting this app or database table if you want to save data.
+                    You can save files (*.*) in folder ...\LocalState to some other folder and it will be your backup. 
+                    This is SQLite-database file (PrimalityTestNow.db) with data. Later on, if you need, you put it back.
+                    Continue testing for primality!
+                </TextBlock>
+                <!--page content goes here-->
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
